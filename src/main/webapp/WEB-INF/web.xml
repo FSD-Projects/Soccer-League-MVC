@@ -28,6 +28,12 @@
 		<description></description>
 		<servlet-class>comm.example.view.ErrorServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AddLeague</servlet-name>
+		<display-name>AddLeague</display-name>
+		<description></description>
+		<servlet-class>comm.example.view.AddLeague</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListLeagueServlet</servlet-name>
 		<url-pattern>/list_leagues.view</url-pattern>
@@ -43,6 +49,10 @@
 	<servlet-mapping>
 		<servlet-name>ErrorServlet</servlet-name>
 		<url-pattern>/error.view</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddLeague</servlet-name>
+		<url-pattern>/add_league.view</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

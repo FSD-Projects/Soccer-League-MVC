@@ -71,11 +71,11 @@ public class AddLeagueServlet extends HttpServlet {
 		if (!errors.isEmpty()) {
 
 			request.setAttribute("ERROR", errors);
-			RequestDispatcher rd = request.getRequestDispatcher("error.view");
+			RequestDispatcher rd = request.getRequestDispatcher("add_league.view");
 			rd.forward(request, response);
 		} else {
 			request.setAttribute("SUCCESS", new League(season, year, title));
-			RequestDispatcher rd = request.getRequestDispatcher("success.view");
+			RequestDispatcher rd = request.getRequestDispatcher("add_league.view");
 			rd.forward(request, response);
 		}
 	}

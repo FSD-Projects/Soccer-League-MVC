@@ -38,7 +38,7 @@ public class SuccessServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		Object obj = request.getAttribute("SUCCESS");
 		League l = (League) obj;
-		out.println("Retrieved details: "+ " " + l.getSeason() + " " + l.getTitle() + " " +  l.getYear());
+		out.println("Added league: "+ " " + l.getSeason() + " " + l.getTitle() + " " +  l.getYear());
 			
 	}
 
