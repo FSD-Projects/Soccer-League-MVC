@@ -10,9 +10,19 @@
 		<description></description>
 		<servlet-class>comm.example.view.ListLeagueServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>AddLeagueServlet</servlet-name>
+		<display-name>AddLeagueServlet</display-name>
+		<description></description>
+		<servlet-class>comm.example.view.AddLeagueServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListLeagueServlet</servlet-name>
 		<url-pattern>/list_leagues.view</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>AddLeagueServlet</servlet-name>
+		<url-pattern>/add_league.do</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>

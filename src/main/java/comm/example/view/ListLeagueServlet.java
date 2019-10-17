@@ -47,10 +47,11 @@ public class ListLeagueServlet extends HttpServlet {
 		list = new ArrayList<League>();
 		list.add(new League("Autumn", 2019, "Women's Cricket"));
 		list.add(new League("Summer", 2019, "Beach Volley"));
+		out.println("<html><title>List All Available League</title><body><table border='1'><tr><td>Season</td><td>Title</td><td>Year</td></tr>");
 		for(League l: list) {
-			out.println(l.getSeason() + " " + l.getTitle() + " " + l.getYear() + "<br/>");
+			out.println("<tr><td>"+l.getSeason()+"</td><td>"+l.getTitle()+"</td><td>"+l.getYear()+"</td></tr>");
 		}
-
+		out.println("</table><a href='index.html'>Go To Home Page</a></body></html>");
 	}
 
 }
