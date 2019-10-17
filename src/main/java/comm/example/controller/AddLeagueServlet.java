@@ -69,10 +69,13 @@ public class AddLeagueServlet extends HttpServlet {
 			errors.add("Select a Season");
 		}
 		if (!errors.isEmpty()) {
-			RequestDispatcher rd = request.getRequestDispatcher("error.html");
+
+			request.setAttribute("ERROR", errors);
+			RequestDispatcher rd = request.getRequestDispatcher("error.view");
 			rd.forward(request, response);
 		} else {
-			RequestDispatcher rd = request.getRequestDispatcher("success.html");
+			request.setAttribute("SUCCESS", new League(season, year, title));
+			RequestDispatcher rd = request.getRequestDispatcher("success.view");
 			rd.forward(request, response);
 		}
 	}

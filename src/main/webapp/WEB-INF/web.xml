@@ -16,6 +16,18 @@
 		<description></description>
 		<servlet-class>comm.example.controller.AddLeagueServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>SuccessServlet</servlet-name>
+		<display-name>SuccessServlet</display-name>
+		<description></description>
+		<servlet-class>comm.example.view.SuccessServlet</servlet-class>
+	</servlet>
+	<servlet>
+		<servlet-name>ErrorServlet</servlet-name>
+		<display-name>ErrorServlet</display-name>
+		<description></description>
+		<servlet-class>comm.example.view.ErrorServlet</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListLeagueServlet</servlet-name>
 		<url-pattern>/list_leagues.view</url-pattern>
@@ -23,6 +35,14 @@
 	<servlet-mapping>
 		<servlet-name>AddLeagueServlet</servlet-name>
 		<url-pattern>/add_league.do</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>SuccessServlet</servlet-name>
+		<url-pattern>/success.view</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>ErrorServlet</servlet-name>
+		<url-pattern>/error.view</url-pattern>
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
