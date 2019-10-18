@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import comm.example.DAO.LeagueDAO;
+import comm.example.DAO.LeagueDAOImpl;
 import comm.example.model.League;
 
 /**
@@ -74,8 +76,11 @@ public class AddLeagueServlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("add_league.view");
 			rd.forward(request, response);
 		} else {
-			request.setAttribute("SUCCESS", new League(season, year, title));
-			RequestDispatcher rd = request.getRequestDispatcher("add_league.view");
+			LeagueDAO dao = new LeagueDAOImpl();
+			League l = new League(season, year, title);
+			request.setAttribute("SUCCESS", l);
+			dao.createLeague(l);
+			RequestDispatcher rd = request.getRequestDispatcher("success.view");
 			rd.forward(request, response);
 		}
 	}
