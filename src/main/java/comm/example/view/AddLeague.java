@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,8 @@ import javax.servlet.http.HttpServletResponse;
 public class AddLeague extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<String> l = null;
+	private String season = null;
+	private String[] seasonArr;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
@@ -22,6 +25,14 @@ public class AddLeague extends HttpServlet {
 	public AddLeague() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void init(ServletConfig config) throws ServletException {
+		// TODO Auto-generated method stub
+		super.init(config);
+		season = config.getInitParameter("season-list");
+		seasonArr = season.split(",");
 	}
 
 	/**
@@ -50,9 +61,9 @@ public class AddLeague extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		l = (List<String>) request.getAttribute("ERROR");
-		if(l != null) {
+		if (l != null) {
 			out.println("Correct the following errors: <br/>");
-			for(String str: l) {
+			for (String str : l) {
 				out.println("<font color='red'>" + str.toUpperCase() + "</font><br/>");
 			}
 		}
@@ -65,14 +76,14 @@ public class AddLeague extends HttpServlet {
 				+ "    <input type=\"text\" id=\"defaultLoginFormEmail\" class=\"form-control mb-4\" placeholder=\"Year\"name=\"year\">\r\n"
 				+ "\r\n" + "    <!-- Title -->\r\n"
 				+ "    <input type=\"text\" id=\"defaultLoginFormPassword\" class=\"form-control mb-4\" placeholder=\"Title\" name=\"title\">\r\n"
-				+ "\r\n" + "    <!-- Season -->\r\n"
-				+ "    <select class=\"browser-default custom-select\" name=\"season\">\r\n"
-				+ "    	<option value=\"Unknown\">Select A Season</option>\r\n"
-				+ "    	<option value=\"Summer\">Summer</option>\r\n"
-				+ "    	<option value=\"Winter\">Winter</option>\r\n"
-				+ "    	<option value=\"Autumn\">Autumn</option>\r\n" + "    </select>\r\n"
-				+ "    <!-- Sign in button -->\r\n"
-				+ "    <button class=\"btn btn-info btn-block my-4\" type=\"submit\">Sign in</button>\r\n" + "\r\n"
+				+ "\r\n" + "    <!-- Season -->\r\n");
+		out.println("<select class=\"browser-default custom-select\" name=\"season\">\r\n");
+		for (String str : seasonArr) {
+			out.println("<option value='" + str + "'>" + str + "</option>");
+		}
+		out.println("</select>");
+		out.println("<!-- Sign in button -->\r\n"
+				+ "<button class=\"btn btn-info btn-block my-4\" type=\"submit\">Sign in</button>\r\n" + "\r\n"
 				+ "</form>\r\n" + "<!-- Default form login -->\r\n" + "</body>\r\n" + "</html>");
 	}
 

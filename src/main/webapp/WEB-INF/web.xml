@@ -33,6 +33,10 @@
 		<display-name>AddLeague</display-name>
 		<description></description>
 		<servlet-class>comm.example.view.AddLeague</servlet-class>
+		<init-param>
+			<param-name>season-list</param-name>
+			<param-value>Unknown,Summer,Winter,Autumn,Spring</param-value>
+		</init-param>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>ListLeagueServlet</servlet-name>
