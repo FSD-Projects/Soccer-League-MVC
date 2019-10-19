@@ -80,7 +80,7 @@ public class AddLeagueServlet extends HttpServlet {
 			League l = new League(season, year, title);
 			request.setAttribute("SUCCESS", l);
 			dao.createLeague(l);
-			RequestDispatcher rd = request.getRequestDispatcher("success.view");
+			RequestDispatcher rd = request.getRequestDispatcher("add_league.view");
 			rd.forward(request, response);
 		}
 	}

@@ -10,6 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import comm.example.DAO.LeagueDAO;
+import comm.example.DAO.LeagueDAOImpl;
+import comm.example.model.League;
+
 /**
  * Servlet implementation class AddLeague
  */
@@ -68,7 +72,7 @@ public class AddLeague extends HttpServlet {
 			}
 		}
 		out.println("<!DOCTYPE html>\r\n" + "<html>\r\n" + "<head>\r\n" + "<meta charset=\"ISO-8859-1\">\r\n"
-				+ "<title>Insert title here</title>\r\n"
+				+ "<title>Sign Up</title>\r\n"
 				+ "<link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css\" integrity=\"sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T\" crossorigin=\"anonymous\">\r\n"
 				+ "\r\n" + "</head>\r\n" + "<body>\r\n" + "<!-- Default form login -->\r\n"
 				+ "<form class=\"text-center border border-light p-5\" action=\"/add_league.do\">\r\n" + "\r\n"
@@ -85,6 +89,18 @@ public class AddLeague extends HttpServlet {
 		out.println("<!-- Sign in button -->\r\n"
 				+ "<button class=\"btn btn-info btn-block my-4\" type=\"submit\">Sign in</button>\r\n" + "\r\n"
 				+ "</form>\r\n" + "<!-- Default form login -->\r\n" + "</body>\r\n" + "</html>");
+		LeagueDAO dao = new LeagueDAOImpl();
+		List<League> l = dao.retrieveLeague();
+		if (!l.isEmpty()) {
+			out.println("<table class=\"table\">\r\n" + "  <thead>\r\n" + "    <tr>\r\n"
+					+ "      <th scope=\"col\">League ID</th>\r\n" + "      <th scope=\"col\">Season</th>\r\n"
+					+ "      <th scope=\"col\">Title</th>\r\n" + "      <th scope=\"col\">Year</th>\r\n"
+					+ "    </tr>\r\n" + "  </thead>\r\n" + "  <tbody>");
+			for (League str : l) {
+				out.println("<tr>\r\n" + "<th>\r\n" + "<td>" + str.getId() + "</td><td>" + str.getSeason() + "</td><td>"
+						+ str.getTitle() + "</td><td>" + str.getYear() + "</td></tr>");
+			}
+		}
 	}
 
 }
